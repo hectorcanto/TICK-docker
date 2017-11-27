@@ -14,7 +14,7 @@ services:
     volumes:
       - influx_data:/var/lib/influxdb
       - ./certs:/etc/ssl/influxdb
-    #  - ./etc/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./etc/influxdb.conf:/etc/influxdb/influxdb.conf
     #env_file:
     #  - ./etc/influxdb.env
     networks:
