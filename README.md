@@ -4,59 +4,44 @@ Run the complete TICK stack using this [docker-compose](https://docs.docker.com/
 By using docker-compose all four official TICK stack images are started and linked together.
 To know more about the individual components see [this](https://influxdata.com/)
 
-There is also [this community Docker Swarm Compose file](https://gist.github.com/cdelaitre/85949d8b697359a319e30a678e23d8bd) as well.
+## Elements
 
-## Usage
+* Server: Influxdb + Kapacitor + Chronograf.
+* Client: Telegraf.
+* Proxy: NGINX (Includes SSL encryption & user/password access).
 
-Start all the images as follows:
+## Usage (BIN files)
 
-    # cd to desired version
-    cd 1.3/
-    # Start all images in the background
-    docker-compose up -d
+### Server
 
-### Check that InfluxDB works:
+* `create_keys`: Generate SSL self-signed certificate.
+* `create_server`: Runs `create_keys` & `start_server` together.
+* `start_server`: Start server (Influxdb + Kapacitor + Chronograf).
+* `stop_server`: Stop server.
 
-Run this curl command, if no errors occur InfluxDB is running:
+### Client
 
-    curl http://localhost:8086/ping
+* `add_client`: Add client (Telegraf).
+* `del_client`: Delete client.
 
+### Proxy
 
-#### The `influx` client
+* `add_user`: Add user & password authentication to nginx proxy.
+* `add_proxy`: Add NGINX proxy for Chronograf.
+* `del_proxy`: Deletes NGINX proxy. Then remove `chronograf > command` line from `docker-compose.yml` and restart Chronograf container.
+* `add_user`: Add user & password authentication to nginx proxy.
 
-Use the built-in influx cli service:
+### General
 
-    docker-compose run influxdb-cli
+* `teardown`: Stops ALL elements & deletes dynamic data.
 
-### Check that Telegraf works
+## Frontend
 
-By default, the Telegraf creates a `telegraf` database.
-Check that InfluxDB has such a database in addition to the `_internal` database.
+* Go to [http://127.0.0.1/chronograf](http://127.0.0.1/chronograf)
 
-    docker-compose run influxdb-cli
-    > show databases
+---
 
-### Check that Chronograf works
+Stack created by Carles San Agustin
 
-Access the Chronograf inteface, [http://localhost:8888](http://localhost:8888)
-
-### Check Kapacitor works
-
-First, run this curl command, if no errors occur Kapacitor is running:
-
-    curl http://localhost:9092/kapacitor/v1/ping
-
-
-Use the built-in kapacitor cli service:
-
-    docker-compose run kapacitor-cli
-    $ kapacitor list tasks
-
-Confirm Kapacitor is subscribed to all databases in InfluxDB
-
-    docker-compose run influxdb-cli
-    > show subscriptions
-
-## Supported Docker versions
-
-This image is officially supported on Docker version 1.10.1 or newer.
+* http://www.carlessanagustin.com
+* https://twitter.com/carlesanagustin

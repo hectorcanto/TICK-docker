@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+source del_client
+source del_proxy
+source stop_server
+
+docker volume prune -f
+docker network prune -f
+sudo rm -Rf ./data

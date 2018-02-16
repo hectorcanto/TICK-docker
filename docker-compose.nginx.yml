@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  tickdocker_influxnet:
+    external: true
+
+services:
+  nginx:
+    image: nginx:1.13.8-alpine
+    volumes:
+      - ./etc/nginx/:/etc/nginx/
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    networks:
+      - tickdocker_influxnet

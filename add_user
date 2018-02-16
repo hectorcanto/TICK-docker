@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+USER=admin
+PASSWORD=test12345678
+
+htpasswd -cb ./etc/nginx/.htpasswd $USER $PASSWORD

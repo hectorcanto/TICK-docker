@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  tickdocker_influxnet:
+    external: true
+
+services:
+  telegraf:
+    image: telegraf:1.4.0
+    restart: always
+    volumes:
+      - ./etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    expose:
+      - "8092"
+      - "8094"
+      - "8125"
+    networks:
+      - tickdocker_influxnet
