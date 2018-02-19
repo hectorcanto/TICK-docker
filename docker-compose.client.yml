@@ -6,7 +6,7 @@ networks:
 
 services:
   telegraf:
-    image: telegraf:1.4.0
+    image: telegraf:1.5.2-alpine
     restart: always
     volumes:
       - ./etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro

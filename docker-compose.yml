@@ -11,7 +11,7 @@ networks:
 services:
 
   influxdb:
-    image: influxdb:1.3.5
+    image: influxdb:1.4.3-alpine
     restart: always
     volumes:
       - ./data/influxdb:/var/lib/influxdb
@@ -23,7 +23,7 @@ services:
       - "8086:8086"
 
   chronograf:
-    image: chronograf:1.3.8
+    image: chronograf:1.4.1-alpine
     restart: always
     environment:
       INFLUXDB_URL: https://influxdb:8086
@@ -40,10 +40,11 @@ services:
       - "8888:8888"
 
   kapacitor:
-    image: kapacitor:1.3.3
+    image: kapacitor:1.4.0-alpine
     restart: always
     environment:
       KAPACITOR_HOSTNAME: kapacitor
+      KAPACITOR_LOAD_DIR: /etc/kapacitor/load
     depends_on:
       - influxdb
     networks:
@@ -53,4 +54,5 @@ services:
     volumes:
       - ./certs:/etc/ssl/influxdb
       - ./etc/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf
+      - ./etc/kapacitor/load:/etc/kapacitor/load
     command: kapacitord -config /etc/kapacitor/kapacitor.conf
