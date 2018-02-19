@@ -7,7 +7,7 @@ networks:
 services:
   telegraf:
     image: telegraf:1.5.2-alpine
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     expose:
