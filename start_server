@@ -1,3 +1,8 @@
 #!/usr/bin/bash
 
-docker-compose up -d
+CHECK="./certs/influxdb/https.key"
+
+if [ -e "$CHECK" ] ;
+then docker-compose up -d ;
+else bash create_keys && docker-compose up -d ;
+fi

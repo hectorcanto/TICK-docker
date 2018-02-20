@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-source create_keys
-source start_server

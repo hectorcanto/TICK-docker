@@ -15,8 +15,7 @@ To know more about the individual components see [this](https://influxdata.com/)
 ### Server
 
 * `create_keys`: Generate SSL self-signed certificate.
-* `create_server`: Runs `create_keys` & `start_server` together.
-* `start_server`: Start server (Influxdb + Kapacitor + Chronograf).
+* `start_server`: Generate SSL self-signed certificate if needed & start server (Influxdb + Kapacitor + Chronograf).
 * `stop_server`: Stop server.
 
 ### Client
