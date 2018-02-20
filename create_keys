@@ -1,16 +1,24 @@
 #!/usr/bin/bash
 
+declare -a arr=( "certs/influxdb" "certs/nginx" )
+
 Country_Name=ES
 State_Name=Catalunya
 Locality=Barcelona
 Organization="Example Co"
 Common_Name=www.example.com
 
-mkdir certs
-cd certs
 
-openssl genrsa -out https.key 2048
-# openssl ecparam -genkey -name secp384r1 -out https.key
-openssl req -new -x509 -sha256 -days 3650 \
-    -key https.key -out https.crt  \
-    -subj "/C=$Country_Name/ST=$State_Name/L=$Locality/O=$Organization/CN=$Common_Name"
+function ssl_keys(){
+  mkdir -p $1
+  openssl genrsa -out $1/https.key 2048
+  # openssl ecparam -genkey -name secp384r1 -out https.key
+  openssl req -new -x509 -sha256 -days 3650 \
+      -key $1/https.key -out $1/https.crt  \
+      -subj "/C=$Country_Name/ST=$State_Name/L=$Locality/O=$Organization/CN=$Common_Name"
+}
+
+for i in "${arr[@]}"
+do
+   ssl_keys "$i"
+done

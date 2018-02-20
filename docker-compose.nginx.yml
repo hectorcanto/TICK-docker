@@ -9,6 +9,7 @@ services:
     image: nginx:1.13.8-alpine
     volumes:
       - ./etc/nginx/:/etc/nginx/
+      - ./certs/nginx:/etc/nginx/certs
     ports:
       - "80:80"
       - "443:443"

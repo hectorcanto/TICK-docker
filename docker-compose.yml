@@ -16,7 +16,7 @@ services:
     volumes:
       - ./data/influxdb:/var/lib/influxdb
       #- tick_data:/var/lib/influxdb
-      - ./certs:/etc/ssl/influxdb
+      - ./certs/influxdb:/etc/ssl/influxdb
       - ./etc/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
     networks:
       influxnet:
@@ -59,7 +59,7 @@ services:
     expose:
       - "9092"
     volumes:
-      - ./certs:/etc/ssl/influxdb
+      - ./certs/influxdb:/etc/ssl/influxdb
       - ./etc/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf
       - ./etc/kapacitor/load:/etc/kapacitor/load
     command: kapacitord -config /etc/kapacitor/kapacitor.conf
