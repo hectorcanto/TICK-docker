@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 ## run as root
 
 export APT_PACKAGES="curl apt-transport-https"
