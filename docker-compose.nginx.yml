@@ -6,7 +6,8 @@ networks:
 
 services:
   nginx:
-    image: nginx:1.13.8-alpine
+    #image: nginx:1.13.8-alpine
+    image: nginx:1.12
     volumes:
       - ./etc/nginx/:/etc/nginx/
       - ./certs/nginx:/etc/nginx/certs

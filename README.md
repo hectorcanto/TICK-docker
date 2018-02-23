@@ -10,6 +10,14 @@ To know more about the individual components see [this](https://influxdata.com/)
 * Client: Telegraf.
 * Proxy: NGINX (Includes SSL encryption & user/password access).
 
+## Version compatibility
+
+| TESTED | influxdb | kapacitor | chronograf | telegraf |
+|--------|----------|-----------|------------|----------|
+| OK     | 1.4.3    | 1.4.0     | 1.3.8      | 1.4.5    |
+| OK     | 1.4.3    | 1.4.0     | 1.3.10     | 1.5.2    |
+|        |          |           |            |          |
+
 ## Usage (BIN files)
 
 ### Server

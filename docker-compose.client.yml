@@ -6,11 +6,12 @@ networks:
 
 services:
   telegraf:
-    image: telegraf:1.5.2-alpine
+    image: telegraf:1.5.2
     restart: unless-stopped
     volumes:
       - ./etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/utmp:/var/run/utmp
     expose:
       - "8092"
       - "8094"
