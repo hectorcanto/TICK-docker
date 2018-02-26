@@ -1,0 +1,31 @@
+# # AMQP consumer plugin
+# [[inputs.amqp_consumer]]
+#   ## AMQP url
+#   url = "amqp://localhost:5672/influxdb"
+#   ## AMQP exchange
+#   exchange = "telegraf"
+#   ## AMQP queue name
+#   queue = "telegraf"
+#   ## Binding Key
+#   binding_key = "#"
+#
+#   ## Maximum number of messages server should give to the worker.
+#   prefetch_count = 50
+#
+#   ## Auth method. PLAIN and EXTERNAL are supported
+#   ## Using EXTERNAL requires enabling the rabbitmq_auth_mechanism_ssl plugin as
+#   ## described here: https://www.rabbitmq.com/plugins.html
+#   # auth_method = "PLAIN"
+#
+#   ## Optional SSL Config
+#   # ssl_ca = "/etc/telegraf/ca.pem"
+#   # ssl_cert = "/etc/telegraf/cert.pem"
+#   # ssl_key = "/etc/telegraf/key.pem"
+#   ## Use SSL but skip chain & host verification
+#   # insecure_skip_verify = false
+#
+#   ## Data format to consume.
+#   ## Each data format has its own unique set of configuration options, read
+#   ## more about them here:
+#   ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+#   data_format = "influx"
