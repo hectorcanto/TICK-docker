@@ -1,0 +1,6 @@
+# the alert data is passed over STDIN to the process.
+
+kind: exec
+options:
+    prog: /path/to/executable
+    args:

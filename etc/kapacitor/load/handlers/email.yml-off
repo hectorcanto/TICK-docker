@@ -1,0 +1,5 @@
+kind: smtp
+options:
+    to:
+        - oncall1@example.com
+        - oncall2@example.com

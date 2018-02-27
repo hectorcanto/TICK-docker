@@ -1,0 +1,8 @@
+# https://docs.influxdata.com/kapacitor/v1.4/working/event-handler-setup/#telegram-setup
+
+kind: telegram
+options:
+  chat-id:
+  parse-mode:
+  disable-web-page-preview: false
+  disable-notification: false

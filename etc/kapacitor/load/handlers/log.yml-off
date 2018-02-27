@@ -1,0 +1,4 @@
+kind: log
+options:
+    path: '/tmp/alerts.log'
+    mode: 'ug+rw'

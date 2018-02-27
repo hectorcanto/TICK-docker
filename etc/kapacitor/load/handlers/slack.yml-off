@@ -1,0 +1,11 @@
+# https://docs.influxdata.com/kapacitor/v1.4/working/using_alert_topics
+# https://docs.influxdata.com/kapacitor/v1.4/working/alerts/#match-expressions
+
+topic: cpu
+id: slack
+kind: slack
+match: changed() == TRUE
+options:
+  channel: '#alerts'
+  username:
+  icon-emoji:

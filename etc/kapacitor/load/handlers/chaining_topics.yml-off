@@ -1,0 +1,9 @@
+# https://docs.influxdata.com/kapacitor/v1.4/working/using_alert_topics#chaining-topics
+
+topic: system
+id: publish-to-ops_team
+kind: publish
+options:
+  topics:
+    - ops_team
+    - system

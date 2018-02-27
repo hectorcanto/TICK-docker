@@ -1,0 +1,5 @@
+kind: post
+options:
+    url: http://example.com
+    endpoint:
+    headers:
