@@ -48,10 +48,24 @@ var alert = data
   |alert()
     .id('{{ index .Tags "host"}}/cpu_used')
     .message('{{ .ID }}:{{ index .Fields "stat" }}')
-    .info(lambda: "stat" > info OR "sigma" > infoSig)
+    //.info(lambda: "stat" > info OR "sigma" > infoSig)
     .warn(lambda: "stat" > warn OR "sigma" > warnSig)
     .crit(lambda: "stat" > crit OR "sigma" > critSig)
 
 // Alert
 alert
-  .log('/tmp/cpu_alert_log.txt')
+     .log('/tmp/cpu_alert_log.txt')
+     // Email subject
+     .message('{{ .Level }}:{{ .ID }}')
+     //Email body as HTML
+     .details('''
+<h1>{{ .ID }}</h1>
+<b>{{ .Message }}</b><br />
+Level: {{ .Level }}<br />
+Time: {{ .Time }}<br />
+Duration: {{ .Duration }}<br />
+Message: {{ .Message }}<br />
+Value1: {{ index .Fields "value" }}<br />
+Value2: {{ index .Fields "key" }}<br />
+''')
+     //.email()

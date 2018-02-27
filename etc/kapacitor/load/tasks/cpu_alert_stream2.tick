@@ -1,0 +1,13 @@
+dbrp "telegraf"."autogen"
+//dbrp "telegraf"."autogen_not"
+
+var data = stream
+    |from()
+        .measurement('cpu')
+        .groupBy(*)
+    |alert()
+        .warn(lambda: "usage_idle" < 20)
+        .crit(lambda: "usage_idle" < 10)
+        //.topic('cpu')
+alert
+    .log('/tmp/cpu_alert_log.txt')
